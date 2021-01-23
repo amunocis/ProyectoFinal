@@ -15,11 +15,12 @@ public class PresenterLogin {
     }
 
     public void checkPassword(String pass) {
-        if (model.checkPassword(pass) && model.checkAs()) {
-            view.toSecondActivity();
-        } else if (!model.checkPassword(pass) && model.checkAs()){
-            view.showPassMsg();
-        } else {
+        if (model.checkAs()) {
+            if (model.checkPassword(pass)) {
+                view.toSecondActivity();
+            } else {
+                view.showPassMsg();
+            }
             view.checkButton();
         }
     }

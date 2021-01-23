@@ -11,6 +11,4 @@ public class ModelApt {
         check =+1;
         return (check < 3);
     }
-
-
 }
