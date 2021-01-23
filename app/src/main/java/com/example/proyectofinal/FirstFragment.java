@@ -17,7 +17,7 @@ public class FirstFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                             Bundle savedInstanceState) {
-        mBinding = FragmentFirstBinding.inflate(getLayoutInflater());
+        mBinding = FragmentFirstBinding.inflate(inflater, container, false);
         return mBinding.getRoot();
     }
 
