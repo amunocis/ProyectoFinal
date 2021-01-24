@@ -8,7 +8,7 @@ public class ModelApt {
     }
 
     public boolean checkAs() {
-        check +=1;
+        check =+1;
         return (check < 3);
     }
 }
