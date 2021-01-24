@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.proyectofinal.databinding.ApartmentListDataBinding;
 import com.example.proyectofinal.databinding.FragmentFirstBinding;
@@ -24,17 +25,10 @@ public class FirstFragment extends Fragment implements AptAdapter.IPasarElement 
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         AptAdapter adapter = new AptAdapter(ApartmentData.apartmentList(), this);
-        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });
+        mBinding.RecyclerView.setAdapter(adapter);
+        mBinding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
-    //Hola
 
     @Override
     public void passElement(Apartment item) {

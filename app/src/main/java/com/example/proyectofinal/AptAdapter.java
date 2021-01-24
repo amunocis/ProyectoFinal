@@ -59,7 +59,7 @@ public class AptAdapter extends RecyclerView.Adapter<AptAdapter.AptViewHolder>{
             super(mBinding.getRoot());
             ivDepto = mBinding.ivDepto;
             tvNombre = mBinding.tvNombre;
-            tvTorre = mBinding.tvNombre;
+            tvTorre = mBinding.tvTorre;
             tvDepto = mBinding.tvDepto;
             tvDireccion = mBinding.tvDireccion;
             itemView.setOnClickListener(this);
