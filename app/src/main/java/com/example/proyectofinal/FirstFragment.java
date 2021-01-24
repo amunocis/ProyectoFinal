@@ -25,12 +25,10 @@ public class FirstFragment extends Fragment implements AptAdapter.IPasarElement 
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         AptAdapter adapter = new AptAdapter(ApartmentData.apartmentList(), this);
-        mBinding.recyclerView.setAdapter(adapter);
-        mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mBinding.RecyclerView.setAdapter(adapter);
+        mBinding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
-
 
     @Override
     public void passElement(Apartment item) {
