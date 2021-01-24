@@ -34,6 +34,7 @@ public class FirstFragment extends Fragment implements AptAdapter.IPasarElement 
             }
         });
     }
+    //Hola
 
     @Override
     public void passElement(Apartment item) {
