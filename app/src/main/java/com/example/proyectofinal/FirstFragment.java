@@ -9,9 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.proyectofinal.databinding.ApartmentListDataBinding;
 import com.example.proyectofinal.databinding.FragmentFirstBinding;
 
-public class FirstFragment extends Fragment {
+public class FirstFragment extends Fragment implements AptAdapter.IPasarElement {
     private FragmentFirstBinding mBinding;
 
     @Override
@@ -24,6 +25,7 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        AptAdapter adapter = new AptAdapter(ApartmentData.apartmentList(), this);
         view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,5 +33,16 @@ public class FirstFragment extends Fragment {
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
         });
+    }
+    //Hola
+
+    @Override
+    public void passElement(Apartment item) {
+        Bundle mBundle = new Bundle();
+        mBundle.putString("clave1", item.getUrlImage());
+        mBundle.putString("clave2", item.getNombre());
+        mBundle.putString("clave3", item.getTorre());
+        mBundle.putString("clave4", item.getDireccion());
+        mBundle.putString("clave5", item.getDepto());
     }
 }

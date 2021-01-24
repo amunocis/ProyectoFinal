@@ -62,6 +62,7 @@ public class AptAdapter extends RecyclerView.Adapter<AptAdapter.AptViewHolder>{
             tvTorre = mBinding.tvNombre;
             tvDepto = mBinding.tvDepto;
             tvDireccion = mBinding.tvDireccion;
+            itemView.setOnClickListener(this);
         }
 
         @Override
@@ -69,11 +70,9 @@ public class AptAdapter extends RecyclerView.Adapter<AptAdapter.AptViewHolder>{
             int position = getLayoutPosition();
             Apartment item = mList.get(position);
             mPass.passElement(item);
-
         }
     }
-
-    public interface IPasarElement {
-        void passElement(Apartment item);
+    public interface IPasarElement{
+        void passElement (Apartment item);
     }
 }
