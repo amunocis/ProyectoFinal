@@ -17,6 +17,12 @@ import java.util.List;
 //<>
 public class AptAdapter extends RecyclerView.Adapter<AptAdapter.AptViewHolder>{
     private List<Apartment> mList;
+    private IPasarElement mPass;
+
+    public AptAdapter(List<Apartment> mList, IPasarElement mPass) {
+        this.mList = mList;
+        this.mPass = mPass;
+    }
 
     @NonNull
     @Override
@@ -41,7 +47,7 @@ public class AptAdapter extends RecyclerView.Adapter<AptAdapter.AptViewHolder>{
         return mList.size();
     }
 
-    public class AptViewHolder extends RecyclerView.ViewHolder {
+    public class AptViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView ivDepto;
         private TextView tvNombre;
         private TextView tvTorre;
@@ -56,6 +62,17 @@ public class AptAdapter extends RecyclerView.Adapter<AptAdapter.AptViewHolder>{
             tvTorre = mBinding.tvNombre;
             tvDepto = mBinding.tvDepto;
             tvDireccion = mBinding.tvDireccion;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            int position = getLayoutPosition();
+            Apartment item = mList.get(position);
+            mPass.passElement(item);
+        }
+    }
+    public interface IPasarElement{
+        void passElement (Apartment item);
     }
 }
