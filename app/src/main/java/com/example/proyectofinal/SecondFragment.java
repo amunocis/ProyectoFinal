@@ -57,12 +57,6 @@ public class SecondFragment extends Fragment {
                 int estado =mBinding.rgEstTern.indexOfChild(mBinding.rgEstTern.findViewById(checkedId));
                 String est = estado+"";
                 Toast.makeText(getContext(), est, Toast.LENGTH_SHORT).show();
-
-            }
-        });
-        mBinding.rgEstados.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
                 boolean eLuces = mBinding.cbLuces.isChecked();
                 String sLuces= eLuces+"";
                 Toast.makeText(getContext(), sLuces, Toast.LENGTH_SHORT).show();
@@ -75,6 +69,12 @@ public class SecondFragment extends Fragment {
                 boolean sDormitario = mBinding.cbBano.isChecked();
                 String bb= sDormitario+"";
                 Toast.makeText(getContext(), bb, Toast.LENGTH_SHORT).show();
+            }
+        });
+        mBinding.rgEstados.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
 
             }
         });
