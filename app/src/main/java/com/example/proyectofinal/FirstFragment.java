@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.proyectofinal.databinding.ApartmentListDataBinding;
 import com.example.proyectofinal.databinding.FragmentFirstBinding;
@@ -26,13 +27,9 @@ public class FirstFragment extends Fragment implements AptAdapter.IPasarElement 
         super.onViewCreated(view, savedInstanceState);
 
         AptAdapter adapter = new AptAdapter(ApartmentData.apartmentList(), this);
-        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });
+        mBinding.recyclerView.setAdapter(adapter);
+        mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
     }
     //Hola
 
@@ -44,5 +41,7 @@ public class FirstFragment extends Fragment implements AptAdapter.IPasarElement 
         mBundle.putString("clave3", item.getTorre());
         mBundle.putString("clave4", item.getDireccion());
         mBundle.putString("clave5", item.getDepto());
+        NavHostFragment.findNavController(FirstFragment.this)
+                .navigate(R.id.action_FirstFragment_to_SecondFragment, mBundle);
     }
 }

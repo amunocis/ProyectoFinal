@@ -35,11 +35,13 @@ public class AptAdapter extends RecyclerView.Adapter<AptAdapter.AptViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull AptViewHolder holder, int position) {
         Apartment element = mList.get(position);
-        Glide.with(holder.ivDepto).load(element.getUrlImage()).centerCrop().into(holder.ivDepto);
+
         holder.tvNombre.setText(element.getNombre());
         holder.tvTorre.setText(element.getTorre());
         holder.tvDepto.setText(element.getDepto());
         holder.tvDireccion.setText(element.getDireccion());
+        Glide.with(holder.ivDepto).load(element.getUrlImage()).centerCrop().into(holder.ivDepto);
+
     }
 
     @Override
@@ -57,11 +59,11 @@ public class AptAdapter extends RecyclerView.Adapter<AptAdapter.AptViewHolder>{
         public AptViewHolder(@NonNull ApartmentListDataBinding mBinding) {
 
             super(mBinding.getRoot());
-            ivDepto = mBinding.ivDepto;
             tvNombre = mBinding.tvNombre;
-            tvTorre = mBinding.tvNombre;
+            tvTorre = mBinding.tvTorre;
             tvDepto = mBinding.tvDepto;
             tvDireccion = mBinding.tvDireccion;
+            ivDepto = mBinding.ivDepto;
             itemView.setOnClickListener(this);
         }
 
