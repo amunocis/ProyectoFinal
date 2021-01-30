@@ -10,6 +10,7 @@
         android:id="@+id/button_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="@string/previous"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,104 +18,124 @@
 
     <ImageView
         android:id="@+id/ivDepto2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkLuces"
-        android:layout_width="454dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="8dp"
-        android:text="Luces de la unidad"
-        app:layout_constraintBottom_toTopOf="@+id/checkDormi"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkDormi"
-        android:layout_width="451dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="8dp"
-        android:text="Elementos de dormitorios"
-        app:layout_constraintBottom_toTopOf="@+id/checkCocina"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkCocina"
-        android:layout_width="449dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:text="Elementos de la cocina"
-        app:layout_constraintBottom_toTopOf="@+id/checkBaño"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkBaño"
-        android:layout_width="451dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="8dp"
-        android:text="Elementos de baño"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="575dp" />
-
-    <RadioGroup
-        android:id="@+id/rgTerminaciones"
-        android:layout_width="454dp"
-        android:layout_height="127dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="646dp">
+        app:layout_constraintStart_toEndOf="@+id/ivDepto2"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tvTorre2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvNombre2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estado de Terminaciones" />
+            android:text="TexView" />
 
-        <RadioButton
-            android:id="@+id/rbTerm3"
+        <TextView
+            android:id="@+id/tvDireccion2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estado Terminaciones Normal (3)" />
+            android:text="TextView" />
 
-        <RadioButton
-            android:id="@+id/rbTerm1"
+        <TextView
+            android:id="@+id/tvDepto2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estado Terminaciones Regular (2)" />
-
-        <RadioButton
-            android:id="@+id/rbTerm2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Estado Terminaciones Malo (1)" />
+            android:text="TextView" />
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/tvNombre2"
-        android:layout_width="223dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="140dp" />
+    <RadioGroup
+        android:id="@+id/rgEstados"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_second"
+        app:layout_constraintEnd_toStartOf="@+id/rgEst.Tern"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/tvDepto2"
-        android:layout_width="227dp"
-        android:layout_height="28dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvNombre2"
-        tools:layout_editor_absoluteY="140dp" />
+        <CheckBox
+            android:id="@+id/cbLuces"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado de Luces" />
+
+        <CheckBox
+            android:id="@+id/cbBano"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado del Baño" />
+
+        <CheckBox
+            android:id="@+id/cbCocina"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado de la Cocina" />
+
+        <CheckBox
+            android:id="@+id/cbDormitorio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Estado del Dormitorio" />
+
+        <RadioButton
+            android:id="@+id/rbOk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Check Realizado" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rgEst.Tern"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_second"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado Terminaciones" />
+
+        <RadioButton
+            android:id="@+id/rbMalas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Malas (1)" />
+
+        <RadioButton
+            android:id="@+id/rbRegular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Regular (2)" />
+
+        <RadioButton
+            android:id="@+id/rbNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Normal (3)" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

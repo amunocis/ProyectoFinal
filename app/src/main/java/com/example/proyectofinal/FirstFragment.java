@@ -25,12 +25,13 @@ public class FirstFragment extends Fragment implements AptAdapter.IPasarElement 
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         AptAdapter adapter = new AptAdapter(ApartmentData.apartmentList(), this);
-        mBinding.RecyclerView.setAdapter(adapter);
-        mBinding.RecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mBinding.recyclerView.setAdapter(adapter);
+        mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
     }
-
+    //Hola
 
     @Override
     public void passElement(Apartment item) {
@@ -43,5 +44,4 @@ public class FirstFragment extends Fragment implements AptAdapter.IPasarElement 
         NavHostFragment.findNavController(FirstFragment.this)
                 .navigate(R.id.action_FirstFragment_to_SecondFragment, mBundle);
     }
-
 }
