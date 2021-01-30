@@ -21,7 +21,7 @@ public class PresenterLogin {
             } else {
                 view.showPassMsg();
             }
-            view.checkButton();
-        }
+        }else view.checkButton();
     }
+
 }
