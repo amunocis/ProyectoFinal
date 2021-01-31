@@ -38,5 +38,7 @@ public class FirstFragment extends Fragment implements AptAdapter.IPasarElement 
         mBundle.putString("clave3", item.getTorre());
         mBundle.putString("clave4", item.getDireccion());
         mBundle.putString("clave5", item.getDepto());
+        NavHostFragment.findNavController(FirstFragment.this)
+                .navigate(R.id.action_FirstFragment_to_SecondFragment, mBundle);
     }
 }

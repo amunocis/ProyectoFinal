@@ -6,10 +6,28 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.bumptech.glide.Glide;
+import com.example.proyectofinal.databinding.FragmentSecondBinding;
+
 public class SecondFragment extends Fragment {
+    private FragmentSecondBinding mBinding;
+    private String imagen, nombre, torre, direccion, depto;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            imagen = getArguments().getString("clave1");
+            nombre = getArguments().getString("clave2");
+            torre = getArguments().getString("clave3");
+            direccion = getArguments().getString("clave4");
+            depto = getArguments().getString("clave5");
+        }
+    }
 
     @Override
     public View onCreateView(
@@ -17,11 +35,17 @@ public class SecondFragment extends Fragment {
             Bundle savedInstanceState
     ) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_second, container, false);
+        mBinding = FragmentSecondBinding.inflate(inflater, container, false);
+        return mBinding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mBinding.tvNombre2.setText(nombre);
+        mBinding.tvTorre2.setText(nombre);
+        mBinding.tvDireccion2.setText(nombre);
+        mBinding.tvDepto2.setText(nombre);
+        Glide.with(view).load(imagen).into(mBinding.ivDepto2);
 
         view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
             @Override

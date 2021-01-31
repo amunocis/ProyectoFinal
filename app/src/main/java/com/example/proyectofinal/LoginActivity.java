@@ -26,7 +26,6 @@ public class LoginActivity extends AppCompatActivity implements IViewLogin {
             @Override
             public void onClick(View v) {
                 presenter.checkPassword(mBinding.etPassword.getText().toString());
-
             }
         });
     }
