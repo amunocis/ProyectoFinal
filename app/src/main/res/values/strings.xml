@@ -12,4 +12,16 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="score">Puntaje Obtenido: %1$s puntos</string>
+    <string name="textview">TextView</string>
+    <string name="estado_de_luces">Estado de Luces</string>
+    <string name="estado_del_bano">Estado del Baño</string>
+    <string name="estado_de_la_cocina">Estado de la Cocina</string>
+    <string name="estado_del_dormitorio">Estado del Dormitorio</string>
+    <string name="estado_terminaciones">Estado Terminaciones</string>
+    <string name="malas">Malas (1)</string>
+    <string name="regular">Regular (2)</string>
+    <string name="normal">Normal (3)</string>
+    <string name="guardar">Guardar</string>
+    <string name="enviar_alerta">enviar alerta</string>
 </resources>

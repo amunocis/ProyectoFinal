@@ -36,25 +36,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="TextView" />
+            android:text="@string/textview" />
 
         <TextView
             android:id="@+id/tvTorre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview" />
 
         <TextView
             android:id="@+id/tvDepto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview" />
 
         <TextView
             android:id="@+id/tvDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/textview" />
     </RadioGroup>
 
 

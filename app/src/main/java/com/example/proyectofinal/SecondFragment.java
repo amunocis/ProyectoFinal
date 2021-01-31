@@ -1,5 +1,9 @@
 package com.example.proyectofinal;
 
+import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,13 +19,16 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.proyectofinal.databinding.FragmentSecondBinding;
+import com.example.proyectofinal.presenter.IViewScore;
+import com.example.proyectofinal.presenter.PresenterScore;
 
-import java.util.zip.Inflater;
+public class SecondFragment extends Fragment implements IViewScore {
 
-public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding mBinding;
-    private String imagen, nombre, torre, direccion, depto ;
+    private PresenterScore presenterScore;
+    private String imagen, nombre, torre, direccion, depto, totalSt ;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,10 +36,10 @@ public class SecondFragment extends Fragment {
         if (getArguments() != null){
             imagen = getArguments().getString("clave1");
             nombre = getArguments().getString("clave2");
-            torre = getArguments().getString("clave3");
-            direccion = getArguments().getString("clave4");
             depto = getArguments().getString("clave5");
         }
+
+        presenterScore = new PresenterScore( this);
     }
 
 
@@ -46,8 +53,6 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mBinding.tvNombre2.setText(nombre);
-        mBinding.tvTorre2.setText(torre);
-        mBinding.tvDireccion2.setText(direccion);
         mBinding.tvDepto2.setText(depto);
         Glide.with(view).load(imagen).apply(new RequestOptions().override(400,400))
                 .into(mBinding.ivDepto2);
@@ -55,39 +60,59 @@ public class SecondFragment extends Fragment {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 int estado =mBinding.rgEstTern.indexOfChild(mBinding.rgEstTern.findViewById(checkedId));
-                String est = estado+"";
-                Toast.makeText(getContext(), est, Toast.LENGTH_SHORT).show();
                 boolean eLuces = mBinding.cbLuces.isChecked();
-                String sLuces= eLuces+"";
-                Toast.makeText(getContext(), sLuces, Toast.LENGTH_SHORT).show();
                 boolean eBano = mBinding.cbBano.isChecked();
-                String sBano= eBano+"";
-                Toast.makeText(getContext(), sBano, Toast.LENGTH_SHORT).show();
-                boolean eCocina = mBinding.cbLuces.isChecked();
-                String sCocina= eCocina+"";
-                Toast.makeText(getContext(), sCocina, Toast.LENGTH_SHORT).show();
-                boolean sDormitario = mBinding.cbBano.isChecked();
-                String bb= sDormitario+"";
-                Toast.makeText(getContext(), bb, Toast.LENGTH_SHORT).show();
+                boolean eCocina = mBinding.cbCocina.isChecked();
+                boolean sDormitorio = mBinding.cbDormitorio.isChecked();
+                presenterScore.showScore(estado, eLuces, eBano, eCocina, sDormitorio);
+                presenterScore.activateButton(estado, eLuces, eBano, eCocina, sDormitorio);
             }
+
         });
-        mBinding.rgEstados.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+        mBinding.btAlert.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
+            public void onClick(View v) {
 
+                String[] emails = {"carol.llanca@gmail.com"};
+                Intent mIntent = new Intent(Intent.ACTION_SENDTO);
+                mIntent.setData(Uri.parse("mailto:"));
+                mIntent.putExtra(Intent.EXTRA_EMAIL, emails);
+                mIntent.putExtra(Intent.EXTRA_SUBJECT, "ALERTA!!: INSPECCIÓN DE DEPTO");
+                mIntent.putExtra(Intent.EXTRA_TEXT, "Revisión de departamento " + nombre + " " + depto);
+                if (mIntent.resolveActivity(getActivity().getPackageManager()) !=null) {
+                    startActivity(mIntent);
+                } else {
+                    Toast.makeText(getContext(), "Debes instalar una app de correo",
+                            Toast.LENGTH_SHORT).show();
+                }
 
             }
+            
         });
-
-        view.findViewById(R.id.button_second).setOnClickListener(new View.OnClickListener() {
+        mBinding.btSave.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Puntaje obtenido " + totalSt, Toast.LENGTH_SHORT).show();
             }
         });
 
 
+    }
+
+    @Override
+    public void showScore(int total) {
+        totalSt = total + "";
+        String puntaje = getString(R.string.score, totalSt);
+        mBinding.tvResult.setTextColor(Color.parseColor("#000000"));
+        mBinding.tvResult.setText(puntaje);
+
+
+    }
+
+    @Override
+    public void activateButton(boolean check) {
+        mBinding.btAlert.setEnabled(check);
 
     }
 }
