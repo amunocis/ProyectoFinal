@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements IViewLogin {
 
     @Override
     public void checkButton() {
-        Toast.makeText(this, "Asopao", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sesión bloqueada. Por favor reinicie la aplicación", Toast.LENGTH_SHORT).show();
         mBinding.button.setEnabled(false);
     }
 }
